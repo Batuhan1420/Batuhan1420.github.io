@@ -20,16 +20,18 @@ const DarkTech = () => {
       icon: <Layout size={32} className="text-gradient" />,
       items: [
         { subtitle: "Visuele Identiteit", content: "Verantwoordelijk voor het basisdesign, het bepalen van het kleurenpalet en de algehele look-and-feel van de app." },
-        { subtitle: "User Experience", content: "Grondig onderzoek gedaan naar dark patterns in UI/UX-design en deze inzichten (en de verdediging ertegen) strategisch geïmplementeerd in het ontwerp van de interface." }
+        { subtitle: "User Experience", content: "Grondig onderzoek gedaan naar dark patterns in UI/UX-design en deze inzichten (en de verdediging ertegen) strategisch geïmplementeerd in het ontwerp van de interface." },
+        { subtitle: "Front-end Development", content: "Verantwoordelijk voor het vertalen van de ontwerpen naar robuuste, interactieve en perfect gestylede front-end code met oog voor detail en performance." }
       ]
     },
     {
       id: "ai",
-      title: "3. AI Integratie",
+      title: "3. AI Integratie & Engineering",
       icon: <BrainCircuit size={32} className="text-gradient" />,
       items: [
         { subtitle: "Model Selectie", content: "Verantwoordelijk voor het onderzoek naar en de uiteindelijke keuze van het AI-model dat het beste bij onze use-case past." },
-        { subtitle: "Eerste Implementatie", content: "De allereerste AI-integratie (functionaliteit voor het maken/verwerken van foto's) gebouwd. Deze code fungeerde als de blauwdruk waarop de andere teamleden hun AI-features succesvol konden verderbouwen." }
+        { subtitle: "Eerste Implementatie", content: "De allereerste AI-integratie (functionaliteit voor het maken/verwerken van foto's) gebouwd. Deze code fungeerde als de blauwdruk waarop de andere teamleden hun AI-features succesvol konden verderbouwen." },
+        { subtitle: "AI Engineering", content: "Het ontwikkelen, finetunen en robuust integreren van AI-functionaliteiten om innovatieve oplossingen binnen de applicatie te realiseren." }
       ]
     },
     {

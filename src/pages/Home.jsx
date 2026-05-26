@@ -24,36 +24,56 @@ const Home = () => {
     <div className="container">
       {/* Hero Section */}
       <section className="section-padding" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ maxWidth: '800px' }}
-        >
-          <motion.div variants={itemVariants} style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'var(--color-surface)', borderRadius: '50px', border: 'var(--glass-border)', marginBottom: '2rem' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
-              <Sparkles size={16} color="var(--color-primary)" />
-              Software Developer & AI Enthusiast
-            </span>
+        <div style={{ display: 'flex', flexWrap: 'wrap-reverse', alignItems: 'center', gap: '4rem', justifyContent: 'space-between', width: '100%' }}>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            style={{ flex: '1 1 500px', maxWidth: '700px' }}
+          >
+            <motion.div variants={itemVariants} style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'var(--color-surface)', borderRadius: '50px', border: 'var(--glass-border)', marginBottom: '2rem' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
+                <Sparkles size={16} color="var(--color-primary)" />
+                Software Developer & AI Enthusiast
+              </span>
+            </motion.div>
+            
+            <motion.h1 variants={itemVariants} style={{ marginBottom: '1.5rem' }}>
+              Building <span className="text-gradient">digital experiences</span> that inspire and perform.
+            </motion.h1>
+            
+            <motion.p variants={itemVariants} style={{ fontSize: '1.25rem', marginBottom: '3rem', maxWidth: '600px' }}>
+              Ik ben gepassioneerd door het bouwen van innovatieve software, van robuuste architecturen tot naadloze gebruikerservaringen met de nieuwste AI-integraties.
+            </motion.p>
+            
+            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1rem' }}>
+              <a href="#projects" className="btn btn-primary">
+                Bekijk mijn werk <ArrowRight size={18} />
+              </a>
+              <Link to="/contact" className="btn btn-outline">
+                Neem contact op
+              </Link>
+            </motion.div>
           </motion.div>
-          
-          <motion.h1 variants={itemVariants} style={{ marginBottom: '1.5rem' }}>
-            Building <span className="text-gradient">digital experiences</span> that inspire and perform.
-          </motion.h1>
-          
-          <motion.p variants={itemVariants} style={{ fontSize: '1.25rem', marginBottom: '3rem', maxWidth: '600px' }}>
-            Ik ben gepassioneerd door het bouwen van innovatieve software, van robuuste architecturen tot naadloze gebruikerservaringen met de nieuwste AI-integraties.
-          </motion.p>
-          
-          <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1rem' }}>
-            <a href="#projects" className="btn btn-primary">
-              Bekijk mijn werk <ArrowRight size={18} />
-            </a>
-            <Link to="/contact" className="btn btn-outline">
-              Neem contact op
-            </Link>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center' }}
+          >
+            <div style={{ position: 'relative', width: '320px', height: '320px' }}>
+               {/* Decorative background glow */}
+               <div className="animate-float" style={{ position: 'absolute', top: '-10%', left: '-10%', right: '-10%', bottom: '-10%', background: 'linear-gradient(45deg, var(--color-primary), var(--color-accent))', borderRadius: '50%', filter: 'blur(50px)', opacity: 0.3, zIndex: 0 }}></div>
+               {/* Image container */}
+               <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', border: '4px solid rgba(255, 255, 255, 0.1)', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+                 <img src="/profile.jpg" alt="Batuhan Arslan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+               </div>
+            </div>
           </motion.div>
-        </motion.div>
+
+        </div>
       </section>
 
       {/* Projects Section */}

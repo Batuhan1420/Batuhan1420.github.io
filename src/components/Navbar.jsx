@@ -21,8 +21,9 @@ const Navbar = () => {
     >
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link to="/" style={{ fontSize: '1.5rem', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ color: 'var(--color-primary)' }}>B</span>
           <span>Portfolio</span>
+          <span style={{ color: 'var(--color-primary)' }}>of Batuhan Arslan</span>
+
         </Link>
         <nav style={{ display: 'flex', gap: '2rem' }}>
           <Link 
