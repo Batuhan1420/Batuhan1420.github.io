@@ -1,8 +1,27 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Sparkles, Terminal } from 'lucide-react';
+import { ArrowRight, Code, Sparkles, Terminal, Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Home = () => {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Zodra je meer eigen foto's hebt (bijv. own_photo2.jpeg), voeg ze hier toe in de lijst!
+  const galleryImages = [
+    "/own_photo.jpeg",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop", // Placeholder foto 1 (vervang later)
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"  // Placeholder foto 2 (vervang later)
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,8 +44,8 @@ const Home = () => {
       {/* Hero Section */}
       <section className="section-padding" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap-reverse', alignItems: 'center', gap: '4rem', justifyContent: 'space-between', width: '100%' }}>
-          
-          <motion.div 
+
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -38,15 +57,15 @@ const Home = () => {
                 Software Developer & AI Enthusiast
               </span>
             </motion.div>
-            
+
             <motion.h1 variants={itemVariants} style={{ marginBottom: '1.5rem' }}>
               Building <span className="text-gradient">digital experiences</span> that inspire and perform.
             </motion.h1>
-            
+
             <motion.p variants={itemVariants} style={{ fontSize: '1.25rem', marginBottom: '3rem', maxWidth: '600px' }}>
               Ik ben gepassioneerd door het bouwen van innovatieve software, van robuuste architecturen tot naadloze gebruikerservaringen met de nieuwste AI-integraties.
             </motion.p>
-            
+
             <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1rem' }}>
               <a href="#projects" className="btn btn-primary">
                 Bekijk mijn werk <ArrowRight size={18} />
@@ -63,14 +82,40 @@ const Home = () => {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             style={{ flex: '1 1 300px', display: 'flex', justifyContent: 'center' }}
           >
-            <div style={{ position: 'relative', width: '320px', height: '320px' }}>
-               {/* Decorative background glow */}
-               <div className="animate-float" style={{ position: 'absolute', top: '-10%', left: '-10%', right: '-10%', bottom: '-10%', background: 'linear-gradient(45deg, var(--color-primary), var(--color-accent))', borderRadius: '50%', filter: 'blur(50px)', opacity: 0.3, zIndex: 0 }}></div>
-               {/* Image container */}
-               <div style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', border: '4px solid rgba(255, 255, 255, 0.1)', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
-                 <img src="/profile.jpg" alt="Batuhan Arslan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-               </div>
-            </div>
+            <motion.div 
+              style={{ position: 'relative', width: '320px', height: '320px', cursor: 'pointer' }}
+              whileHover="hover"
+              onClick={() => setIsGalleryOpen(true)}
+            >
+              {/* Decorative background glow that expands on hover */}
+              <motion.div 
+                className="animate-float" 
+                variants={{ hover: { scale: 1.15, opacity: 0.6 } }}
+                transition={{ duration: 0.3 }}
+                style={{ position: 'absolute', top: '-10%', left: '-10%', right: '-10%', bottom: '-10%', background: 'linear-gradient(45deg, var(--color-primary), var(--color-accent))', borderRadius: '50%', filter: 'blur(50px)', opacity: 0.3, zIndex: 0 }} 
+              />
+              
+              {/* Image container */}
+              <motion.div 
+                variants={{ hover: { scale: 1.05 } }}
+                transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
+                style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', border: '4px solid rgba(255, 255, 255, 0.1)', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}
+              >
+                <img src="/own_photo.jpeg" alt="Batuhan Arslan" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '20% center' }} />
+                
+                {/* Hover overlay with Camera icon */}
+                <motion.div 
+                  variants={{ hover: { opacity: 1 } }}
+                  initial={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', backdropFilter: 'blur(3px)' }}
+                >
+                  <motion.div variants={{ hover: { scale: 1, y: 0 } }} initial={{ scale: 0.8, y: 10 }}>
+                    <Camera size={48} strokeWidth={1.5} color="white" />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </motion.div>
 
         </div>
@@ -84,45 +129,92 @@ const Home = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem', fontSize: '2.5rem' }}>
             <Terminal size={32} color="var(--color-primary)" />
             Uitgelichte Projecten
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
             {/* Dark Tech Project Card */}
-            <Link to="/dark-tech" style={{ display: 'block' }}>
-              <motion.div 
+            <Link to="/dark-tech" style={{ display: 'block', height: '100%' }}>
+              <motion.div
                 className="glass-panel"
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                style={{ height: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}
+                whileHover={{ y: -8, scale: 1.01 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                style={{ 
+                  height: '100%', 
+                  padding: '2.5rem', 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  position: 'relative', 
+                  overflow: 'hidden',
+                  background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1px solid rgba(255,255,255,0.05)'
+                }}
               >
                 {/* Decorative background blob */}
-                <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '150px', height: '150px', background: 'var(--color-primary)', borderRadius: '50%', filter: 'blur(80px)', opacity: 0.2 }}></div>
-                
-                <div style={{ marginBottom: '1.5rem', display: 'inline-block', padding: '0.75rem', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '12px', color: 'var(--color-primary)' }}>
-                  <Code size={24} />
+                <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: 'var(--color-primary)', borderRadius: '50%', filter: 'blur(90px)', opacity: 0.15 }}></div>
+
+                {/* Icon wrapper - Fixed stretching */}
+                <div style={{ 
+                  marginBottom: '2rem', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  width: '64px', 
+                  height: '64px', 
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05))', 
+                  border: '1px solid rgba(59, 130, 246, 0.2)',
+                  borderRadius: '16px', 
+                  color: 'var(--color-primary)',
+                  boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+                  alignSelf: 'flex-start' /* Prevents flex column from stretching it */
+                }}>
+                  <Code size={28} />
                 </div>
-                
-                <h3 style={{ marginBottom: '1rem', fontSize: '1.75rem' }}>Dark Tech</h3>
-                <p style={{ flex: 1, marginBottom: '2rem' }}>
+
+                <h3 style={{ marginBottom: '1rem', fontSize: '2rem', fontWeight: '700', letterSpacing: '-0.02em', color: 'var(--color-text)' }}>Dark Tech</h3>
+                <p style={{ flex: 1, marginBottom: '2.5rem', fontSize: '1.1rem', color: 'var(--color-text-muted)', lineHeight: '1.7' }}>
                   Een innovatief semesterproject waar ik de leiding nam over de architectuur, AI-integratie, en de implementatie van dark patterns in UI/UX-design.
                 </p>
-                
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: 'auto' }}>
+
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: 'auto' }}>
                   {['React', 'AI Model', 'UI/UX', 'Architecture'].map(tag => (
-                    <span key={tag} style={{ fontSize: '0.8rem', padding: '0.25rem 0.75rem', background: 'var(--color-surface)', border: 'var(--glass-border)', borderRadius: '20px', color: 'var(--color-text-muted)' }}>
+                    <span key={tag} style={{ 
+                      fontSize: '0.85rem', 
+                      fontWeight: '500', 
+                      padding: '0.4rem 1rem', 
+                      background: 'rgba(255,255,255,0.03)', 
+                      border: '1px solid rgba(255,255,255,0.08)', 
+                      borderRadius: '100px', 
+                      color: 'var(--color-text-muted)',
+                      letterSpacing: '0.02em',
+                      backdropFilter: 'blur(4px)'
+                    }}>
                       {tag}
                     </span>
                   ))}
                 </div>
               </motion.div>
             </Link>
-            
+
             {/* Placeholder for future projects */}
-            <div className="glass-panel" style={{ height: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: '1px dashed var(--color-border)', background: 'transparent', opacity: 0.5 }}>
-              <p style={{ margin: 0 }}>Meer projecten volgen snel...</p>
+            <div 
+              style={{ 
+                height: '100%', 
+                padding: '2.5rem', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                border: '2px dashed rgba(255,255,255,0.05)', 
+                borderRadius: '24px',
+                background: 'rgba(255,255,255,0.01)'
+              }}>
+              <Sparkles size={32} color="var(--color-text-muted)" style={{ marginBottom: '1rem', opacity: 0.5 }} />
+              <p style={{ margin: 0, color: 'var(--color-text-muted)', fontWeight: '500', fontSize: '1.1rem', opacity: 0.7 }}>
+                Meer projecten volgen snel...
+              </p>
             </div>
           </div>
         </motion.div>

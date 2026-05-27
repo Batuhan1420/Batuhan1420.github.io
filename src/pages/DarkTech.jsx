@@ -9,9 +9,9 @@ const DarkTech = () => {
       title: "1. Fundament & Software Architectuur",
       icon: <Server size={32} className="text-gradient" />,
       items: [
-        { subtitle: "Project Setup", content: "De volledige basis van de applicatie from scratch opgebouwd, zodat het team een solide startpunt had." },
-        { subtitle: "Architectuur & Structuur", content: "Uitgebreid onderzoek gedaan naar de optimale folder- en projectstructuur en deze geïmplementeerd. Hierbij heb ik het fundament gelegd volgens het Open/Closed Principle, zodat onze software-entiteiten open zijn voor uitbreiding maar gesloten voor modificatie (we kunnen veranderen wat de app doet, zonder te breken hoe de kern werkt)." },
-        { subtitle: "Systeemontwerp", content: "UML-diagrammen uitgewerkt om de datastromen en structuur inzichtelijk te maken." }
+        { subtitle: "Project Setup", content: "De complete basisapplicatie from scratch opgezet, wat diende als het startpunt voor het ontwikkelteam." },
+        { subtitle: "Architectuur & Structuur", content: "De projectstructuur ontworpen en geïmplementeerd. Het fundament is gebouwd volgens het Open/Closed Principle: software-entiteiten (classes, modules, functies) zijn open voor uitbreiding, maar gesloten voor modificatie. Hierdoor kunnen we veranderen wat de applicatie doet, zonder te wijzigen hoe de kern werkt." },
+        { subtitle: "Systeemontwerp", content: "Heldere UML diagram" }
       ]
     },
     {
@@ -19,9 +19,9 @@ const DarkTech = () => {
       title: "2. UI/UX Design & Front-end",
       icon: <Layout size={32} className="text-gradient" />,
       items: [
-        { subtitle: "Visuele Identiteit", content: "Verantwoordelijk voor het basisdesign, het bepalen van het kleurenpalet en de algehele look-and-feel van de app." },
-        { subtitle: "User Experience", content: "Grondig onderzoek gedaan naar dark patterns in UI/UX-design en deze inzichten (en de verdediging ertegen) strategisch geïmplementeerd in het ontwerp van de interface." },
-        { subtitle: "Front-end Development", content: "Verantwoordelijk voor het vertalen van de ontwerpen naar robuuste, interactieve en perfect gestylede front-end code met oog voor detail en performance." }
+        { subtitle: "Visuele Identiteit", content: "Volledig verantwoordelijk voor het basisdesign, het kleurenpalet en de algehele look-and-feel van de applicatie." },
+        { subtitle: "Ethical UX", content: "Diepgaand onderzoek uitgevoerd naar dark patterns in UI/UX. Deze inzichten strategisch geïmplementeerd in de interface om gebruikers proactief te beschermen." },
+        { subtitle: "Front-end Development", content: "Verantwoordelijk voor het vertalen van ontwerpen naar robuuste, interactieve en responsieve front-end code, met een sterke focus op performance." }
       ]
     },
     {
@@ -29,19 +29,18 @@ const DarkTech = () => {
       title: "3. AI Integratie & Engineering",
       icon: <BrainCircuit size={32} className="text-gradient" />,
       items: [
-        { subtitle: "Model Selectie", content: "Verantwoordelijk voor het onderzoek naar en de uiteindelijke keuze van het AI-model dat het beste bij onze use-case past." },
-        { subtitle: "Eerste Implementatie", content: "De allereerste AI-integratie (functionaliteit voor het maken/verwerken van foto's) gebouwd. Deze code fungeerde als de blauwdruk waarop de andere teamleden hun AI-features succesvol konden verderbouwen." },
-        { subtitle: "AI Engineering", content: "Het ontwikkelen, finetunen en robuust integreren van AI-functionaliteiten om innovatieve oplossingen binnen de applicatie te realiseren." }
+        { subtitle: "Model Selectie", content: "Verantwoordelijk voor de evaluatie en uiteindelijke selectie van het meest geschikte AI-model voor onze use-case." },
+        { subtitle: "Architecturale Blauwdruk", content: "De allereerste AI-integratie (fotoverwerking) gebouwd. Deze code diende als blauwdruk voor het team om veilig nieuwe AI-features te ontwikkelen." },
+        { subtitle: "AI Engineering", content: "Functionaliteiten ontwikkeld, gefinetuned en robuust geïntegreerd voor een innovatieve gebruikerservaring." }
       ]
     },
     {
       id: "team",
-      title: "4. Team Lead & Code Kwaliteit (QA)",
+      title: "4. Team Lead & Kwaliteitsborging (QA)",
       icon: <Users size={32} className="text-gradient" />,
       items: [
-        { subtitle: "Mentorschap", content: "Teamleden actief (hands-on) geholpen bij het coderen, het debuggen en het aanleren van de juiste codeerstructuren." },
-        { subtitle: "Versiebeheer Workflow", content: "Een professionele Git-workflow geïntroduceerd en gehandhaafd. Dit omvatte het verplichten van atomic commit messages, gestructureerde merge requests en het uitvoeren van strenge merge reviews." },
-        { subtitle: "Test- & Kwaliteitsstandaarden", content: "De lat voor betrouwbaarheid hoog gelegd. Ik heb ervoor gezorgd dat we werken met robuuste, productiewaardige standaarden door de code leesbaar te houden via het AAA-patroon, betrouwbaar te maken met de FIRST-principes, en edge cases en foutsituaties grondig af te vangen met de RIGHT-BICEP testmethodiek." }
+        { subtitle: "Mentorschap", content: "Het team actief (hands-on) begeleid bij het programmeren, debuggen en aanleren van de juiste codeerstructuren." },
+        { subtitle: "Versiebeheer Workflow", content: "Een strakke Git-workflow afgedwongen inclusief verplichte atomic commit messages, gestructureerde merge requests en strenge code reviews." },
       ]
     },
     {
@@ -49,8 +48,8 @@ const DarkTech = () => {
       title: "5. Business & Projectmanagement",
       icon: <Target size={32} className="text-gradient" />,
       items: [
-        { subtitle: "Agile Ontwikkeling", content: "Het opstellen van de User Stories om de taken voor het team helder en behapbaar te maken." },
-        { subtitle: "Strategie", content: "Het initiëren, onderzoeken en opzetten van het zakelijke Business Plan om de professionele en commerciële kant van het project te borgen." }
+        { subtitle: "Agile Management", content: "Complexe functionaliteiten opgedeeld in behapbare en heldere User Stories voor het team." },
+        { subtitle: "Business Strategie", content: "Het zakelijke Business Plan geïnitieerd en uitgewerkt om de commerciële haalbaarheid en professionaliteit van het project te borgen." }
       ]
     }
   ];
@@ -72,7 +71,7 @@ const DarkTech = () => {
         </div>
         <h1 style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>Dark Tech</h1>
         <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto' }}>
-          Mijn Bijdragen & Verantwoordelijkheden in het Project
+          Mijn Rol & Impact in het Project
         </p>
       </motion.div>
 
