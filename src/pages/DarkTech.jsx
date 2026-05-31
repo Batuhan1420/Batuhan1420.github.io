@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Server, Layout, BrainCircuit, Users, Target, ArrowLeft, PenTool, Lightbulb, Code } from 'lucide-react';
+import { Server, Layout, BrainCircuit, Users, Target, ArrowLeft, PenTool, Lightbulb, Code, Info, ShieldAlert } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const DarkTech = () => {
@@ -129,10 +129,75 @@ const DarkTech = () => {
           Semester Project
         </div>
         <h1 style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>Dark Tech</h1>
-        <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto' }}>
-          Mijn Rol & Impact in het Project
+        <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', color: 'var(--color-text-muted)' }}>
+          Mijn Rol, Impact & Architectuur in het Project
         </p>
       </motion.div>
+
+      {/* Introductie & Dark Patterns Sectie */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', maxWidth: '900px', margin: '0 auto', marginBottom: '6rem' }}>
+        
+        {/* Wat is dit project? */}
+        <motion.div
+          className="glass-panel"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          style={{ padding: '3rem', position: 'relative', overflow: 'hidden' }}
+        >
+          <div style={{ position: 'absolute', top: '3rem', left: '3rem', width: '60px', height: '60px', background: 'var(--color-primary)', borderRadius: '50%', filter: 'blur(40px)', opacity: 0.3 }}></div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
+            <div style={{ width: '64px', height: '64px', borderRadius: '16px', background: 'var(--color-surface)', border: 'var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Info size={32} className="text-gradient" />
+            </div>
+            <h2 style={{ margin: 0 }}>Waar gaat dit project over?</h2>
+          </div>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-text-muted)', margin: 0 }}>
+              Dark Tech is een innovatief semesterproject waarin de grenzen van ethisch design, kunstmatige intelligentie en software-architectuur worden opgezocht. Het doel was om een geavanceerde applicatie te ontwikkelen (vanaf de absolute basis tot een werkend product) waarbij we specifiek onderzochten hoe <strong>'Dark Patterns'</strong> – met name gefocust op de menselijke fysiologie en psychologie – het gebruikersgedrag onbewust kunnen sturen. Naast de puur technische AI-integratie lag er een gigantische focus op het zakelijke domein (Business Plan) en het adviserende aspect (Adviesrapport) rondom de ethische dilemma's van dergelijke technologieën.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Dark Patterns */}
+        <motion.div
+          className="glass-panel"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{ padding: '3rem', position: 'relative', overflow: 'hidden' }}
+        >
+          <div style={{ position: 'absolute', top: '3rem', left: '3rem', width: '60px', height: '60px', background: 'var(--color-accent)', borderRadius: '50%', filter: 'blur(40px)', opacity: 0.3 }}></div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
+            <div style={{ width: '64px', height: '64px', borderRadius: '16px', background: 'var(--color-surface)', border: 'var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <ShieldAlert size={32} className="text-gradient" />
+            </div>
+            <h2 style={{ margin: 0 }}>Geïmplementeerde Dark Patterns</h2>
+          </div>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-text-muted)', marginBottom: '2rem' }}>
+              Tijdens dit project hebben we bewust de randjes opgezocht om de psychologische impact van UX-design te begrijpen, toe te passen en de gebruiker er vervolgens tegen te beschermen. De volgende "Dark" aspecten stonden centraal:
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ paddingLeft: '1.5rem', borderLeft: '2px solid var(--color-border)' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)' }}>Smaakmanipulatie & Psychologisch Ontwerp</h3>
+                <p style={{ margin: 0, lineHeight: '1.6', color: 'var(--color-text-muted)' }}>Het beïnvloeden van de gebruiker door in te spelen op basale menselijke fysiologie. Hiervoor is diepgaand onderzoek gedaan naar hoe bepaalde visuele prikkels (zoals kleur, vorm en timing) fysieke verlangens kunnen opwekken of sturen in een interface.</p>
+              </div>
+              <div style={{ paddingLeft: '1.5rem', borderLeft: '2px solid var(--color-border)' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)' }}>Het 'Dark-Dilemma-Light' Principe</h3>
+                <p style={{ margin: 0, lineHeight: '1.6', color: 'var(--color-text-muted)' }}>Een ontwerpprincipe (uitgebreid geanalyseerd en vastgelegd in het adviesrapport) waarbij bewust wordt gespeeld met de flinterdunne grens tussen ethisch transparant ('light') design en sturend/manipulatief ('dark') design om zo de interactie te forceren.</p>
+              </div>
+              <div style={{ paddingLeft: '1.5rem', borderLeft: '2px solid var(--color-border)' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--color-text)' }}>Fysiologische Gedragssturing</h3>
+                <p style={{ margin: 0, lineHeight: '1.6', color: 'var(--color-text-muted)' }}>De UI is iteratief zo opgebouwd om de gebruiker zo 'dark' mogelijk een bepaalde conversie of actie te laten uitvoeren, puur door gebruik te maken van de eerder onderzochte fysiologische kwetsbaarheden (die getest zijn op o.a. de kennisparade).</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', maxWidth: '900px', margin: '0 auto', marginBottom: '6rem' }}>
         <h2 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '1rem', color: 'var(--color-text)' }}>Project Fasen</h2>
