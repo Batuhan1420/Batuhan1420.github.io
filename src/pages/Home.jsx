@@ -9,7 +9,7 @@ const Home = () => {
 
   // Zodra je meer eigen foto's hebt (bijv. own_photo2.jpeg), voeg ze hier toe in de lijst!
   const galleryImages = [
-    "/own_photo.jpeg",
+    "/hero-portrait.png",
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop", // Placeholder foto 1 (vervang later)
     "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"  // Placeholder foto 2 (vervang later)
   ];
@@ -97,11 +97,26 @@ const Home = () => {
               
               {/* Image container */}
               <motion.div 
-                variants={{ hover: { scale: 1.05 } }}
+                variants={{ hover: { scale: 1.05, rotateY: 5, rotateX: -5 } }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
-                style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', border: '4px solid rgba(255, 255, 255, 0.1)', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}
+                style={{ position: 'relative', width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', border: '4px solid rgba(255, 255, 255, 0.1)', zIndex: 1, boxShadow: '0 20px 40px rgba(0,0,0,0.5)', perspective: 1000 }}
               >
-                <img src="/own_photo.jpeg" alt="Batuhan Arslan" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '20% center' }} />
+                {/* Continuous cinematic video-like animation on the image */}
+                <motion.img 
+                  src="/hero-portrait.png" 
+                  alt="Batuhan Arslan" 
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    x: [0, 10, -10, 0],
+                    y: [0, -10, 10, 0]
+                  }}
+                  transition={{ 
+                    duration: 20, 
+                    ease: "easeInOut", 
+                    repeat: Infinity 
+                  }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }} 
+                />
                 
                 {/* Hover overlay with Camera icon */}
                 <motion.div 
@@ -219,6 +234,132 @@ const Home = () => {
           </div>
         </motion.div>
       </section>
+
+      {/* Interactive Photo Gallery Modal */}
+      <AnimatePresence>
+        {isGalleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.85)',
+              backdropFilter: 'blur(15px)',
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onClick={() => setIsGalleryOpen(false)}
+          >
+            {/* Close Button */}
+            <motion.button
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsGalleryOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '2rem',
+                right: '2rem',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: 'none',
+                color: 'white',
+                width: '50px',
+                height: '50px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: 10000
+              }}
+            >
+              <X size={24} />
+            </motion.button>
+
+            {/* Previous Button */}
+            <motion.button
+              whileHover={{ scale: 1.1, x: -5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              style={{
+                position: 'absolute',
+                left: '2rem',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: 'none',
+                color: 'white',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: 10000
+              }}
+            >
+              <ChevronLeft size={32} />
+            </motion.button>
+
+            {/* Current Image */}
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              style={{
+                position: 'relative',
+                width: '90vw',
+                height: '80vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={galleryImages[currentImageIndex]} 
+                alt={`Gallery ${currentImageIndex + 1}`} 
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                  borderRadius: '16px',
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                }}
+              />
+            </motion.div>
+
+            {/* Next Button */}
+            <motion.button
+              whileHover={{ scale: 1.1, x: 5 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              style={{
+                position: 'absolute',
+                right: '2rem',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: 'none',
+                color: 'white',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: 10000
+              }}
+            >
+              <ChevronRight size={32} />
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
