@@ -83,8 +83,7 @@ const DarkTech = () => {
       icon: <PenTool size={32} className="text-gradient" />,
       items: [
         {
-          content: "Hierbij heb ik de gebruikerstesten volledig zelf ontworpen of gedeeltelijk samen met Adam. Ook de brainstorm en ideation sessies (zie sticky notes) hebben geleid tot de eerste concepten.",
-          image: "/ideation.png"
+          content: "Hierbij heb ik de gebruikerstesten volledig zelf ontworpen of gedeeltelijk samen met Adam."
         },
         {
           content: "Hiernaast voor de kennisparade om te testen met prototypes heb ik zelf een design gemaakt en dat getest met gebruikers, hier zit vooral de dark patterns van human physiology in, die ik had onderzocht. Hierover is ook een uitgebreid analyse uitgevoerd in de inspiratie analyse die ik ook ga inleveren samen met deze document. In dat document moet je specifiek naar het kopje: 'Conceptueel Kader: Smaakmanipulatie & Psychologisch Ontwerp' gaan. Hier nog een screenshot van mijn design die ook in de inspiratie analyse staat.",
@@ -108,6 +107,10 @@ const DarkTech = () => {
         {
           content: "Demo van de applicatie:",
           image: "/fotos-demo.png"
+        },
+        {
+          content: "Gedurende de realisatiefase hielden we regelmatig retrospectives (vaak na elke iteratie/sprint). Hierbij gaven we tops, tips en een cijfer aan het team om onze samenwerking en het proces continu te evalueren en te verbeteren (zoals te zien op de sticky notes).",
+          image: "/retrospective.png"
         }
       ]
     }
