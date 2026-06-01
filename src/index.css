@@ -155,3 +155,37 @@ p {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .glass-panel {
+    padding: 1.5rem !important;
+  }
+
+  .section-padding {
+    padding: 3rem 0;
+  }
+
+  /* Force word wrapping for long headings to prevent overflow */
+  h1, h2, h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}

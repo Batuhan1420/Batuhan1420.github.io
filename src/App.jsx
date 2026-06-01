@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import DarkTech from './pages/DarkTech';
+import EduApp from './pages/EduApp';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dark-tech" element={<DarkTech />} />
+            <Route path="/edu-app" element={<EduApp />} />
           </Routes>
         </main>
         <Footer />

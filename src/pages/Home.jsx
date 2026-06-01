@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Sparkles, Terminal, Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Code, Sparkles, Terminal, Camera, X, ChevronLeft, ChevronRight, Smartphone } from 'lucide-react';
 
 const Home = () => {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -213,24 +213,66 @@ const Home = () => {
               </motion.div>
             </Link>
 
-            {/* Placeholder for future projects */}
-            <div 
-              style={{ 
-                height: '100%', 
-                padding: '2.5rem', 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'center', 
-                alignItems: 'center', 
-                border: '2px dashed rgba(255,255,255,0.05)', 
-                borderRadius: '24px',
-                background: 'rgba(255,255,255,0.01)'
-              }}>
-              <Sparkles size={32} color="var(--color-text-muted)" style={{ marginBottom: '1rem', opacity: 0.5 }} />
-              <p style={{ margin: 0, color: 'var(--color-text-muted)', fontWeight: '500', fontSize: '1.1rem', opacity: 0.7 }}>
-                Meer projecten volgen snel...
-              </p>
-            </div>
+            {/* Educatief Leerplatform Project Card */}
+            <Link to="/edu-app" style={{ display: 'block', height: '100%' }}>
+              <motion.div
+                className="glass-panel"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                style={{ 
+                  height: '100%', 
+                  padding: '3rem', 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  position: 'relative', 
+                  overflow: 'hidden',
+                  background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  borderRadius: '24px'
+                }}
+              >
+                <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '250px', height: '250px', background: 'var(--color-accent)', borderRadius: '50%', filter: 'blur(100px)', opacity: 0.15 }}></div>
+
+                <div style={{ 
+                  marginBottom: '2rem', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  width: '70px', 
+                  height: '70px', 
+                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05))', 
+                  border: '1px solid rgba(139, 92, 246, 0.2)',
+                  borderRadius: '20px', 
+                  color: 'var(--color-accent)',
+                  boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+                  alignSelf: 'flex-start'
+                }}>
+                  <Smartphone size={32} />
+                </div>
+
+                <h3 style={{ marginBottom: '1.5rem', fontSize: '2.2rem', fontWeight: '700', letterSpacing: '-0.02em', color: 'var(--color-text)', lineHeight: 1.2 }}>Educatief Leerplatform</h3>
+                <p style={{ flex: 1, marginBottom: '3rem', fontSize: '1.2rem', color: 'var(--color-text-muted)', lineHeight: '1.8' }}>
+                  Een mobiele applicatie voor basisschoolleerlingen gericht op gamification, educatie en premium UI/UX.
+                </p>
+
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: 'auto' }}>
+                  {['React Native', 'C# / .NET', 'TypeScript', 'Gamification'].map(tag => (
+                    <span key={tag} style={{ 
+                      fontSize: '0.9rem', 
+                      fontWeight: '500', 
+                      padding: '0.5rem 1.2rem', 
+                      background: 'rgba(255,255,255,0.03)', 
+                      border: '1px solid rgba(255,255,255,0.08)', 
+                      borderRadius: '100px', 
+                      color: 'var(--color-text-muted)',
+                      backdropFilter: 'blur(4px)'
+                    }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            </Link>
           </div>
         </motion.div>
       </section>
